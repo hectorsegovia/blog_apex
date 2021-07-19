@@ -1,0 +1,9 @@
+function abrir(valor)  { 
+        $(window).on('theme42ready', function () { 
+            if ($('.t-PageBody').hasClass('js-navExpanded')) { 
+                $('#t_Button_navControl').click(); 
+            } 
+                
+            }); 
+    }(apex.jQuery);
+
