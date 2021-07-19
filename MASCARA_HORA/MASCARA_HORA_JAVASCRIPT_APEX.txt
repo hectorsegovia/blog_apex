@@ -1,3 +1,6 @@
+onfocusout="this.value=mascarahora(this.value); "
+
+
 
 /*ESTA FUNCIÓN SE UTILIZA EN EL AUDA0004 PARA AGREGAR LA MASCARA DE HORAS*/
 function mascarahora(event) {
