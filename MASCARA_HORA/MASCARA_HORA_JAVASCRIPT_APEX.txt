@@ -1,0 +1,39 @@
+
+/*ESTA FUNCIÓN SE UTILIZA EN EL AUDA0004 PARA AGREGAR LA MASCARA DE HORAS*/
+function mascarahora(event) {
+    var valor; 
+    var valorrecibido; 
+    valorrecibido = event.replace(/:/g, '')
+    if (valorrecibido.length == 4) {
+        var valores = valorrecibido.charAt(valorrecibido.length - 1);
+        if (valores != 0 & valores != 5) {
+            apex.item("P18_MENSAJE").setValue('95');
+            apex.item("P5_MENSAJE").setValue('95');
+            valor = null;
+            return valor; 
+        }else {
+           valor = valorrecibido.replace(/(\d)(?=(\d{2})+(?!\d))/g, '$1:'); 
+            return valor;  
+        }
+        
+    }else {
+
+        var valores = valorrecibido.charAt(valorrecibido.length - 1);
+        if (valores != 0 & valores != 5) {
+            apex.item("P18_MENSAJE").setValue('95');
+            apex.item("P5_MENSAJE").setValue('95');
+            valor = null;
+            return valor; 
+        }else {
+        	if(valorrecibido == "00000") {
+    			valor = "00:00";
+            	return valor; 
+    		}
+    		else {
+    			valor = valorrecibido.replace(/(\d{3})(?=(\d{2})+(?!\d))/g, '$1:'); 
+            	return valor; 
+    		}
+            
+        }
+    }
+}; 
