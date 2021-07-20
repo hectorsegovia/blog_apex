@@ -1,0 +1,54 @@
+onkeyup = "setDateFormat(this);"
+
+    /*AGREGA DE FORMA AUTOMÁTICA LA MASCARA DE FECHA DD/MM/YYYY*/
+function setDateFormat(obj){
+   if(event.keyCode < 48 || (event.keyCode > 57 && event.keyCode < 96) || event.keyCode > 105){
+   } 
+   else{  
+       if(obj.value.length==2){
+         if(parseInt(obj.value)>=1 && parseInt(obj.value)<32){
+              obj.value = obj.value + "/"; 
+            } else {
+           obj.value='';
+              
+         }
+       }
+        if(obj.value.length==5){
+            
+            var d=obj.value.substr(3,2); 
+         if(d>=1 && d<13){
+              obj.value = obj.value + "/";
+            } else {
+                var dd=obj.value.substr(0,3); 
+           obj.value=dd;
+             
+         }
+       }
+        if(obj.value.length==10){
+           var valoranho =obj.value.substr(6,4); 
+           if(valoranho > 1899 && valoranho < 9999){
+                     var dd=obj.value.substr(6,4); 
+              obj.value = obj.value;
+            } else {
+                var dd=obj.value.substr(0,6); 
+           obj.value=dd;
+             
+         }
+       }
+        if(obj.value.length==11 || obj.value.length > 11){
+           obj.value='';
+       }
+     if(obj.value.length==6){
+       var d=obj.value.substr(5,1);
+       if(d !="/"){
+         obj.value='';
+       }
+       }
+     if(obj.value.length==3){
+       var d=obj.value.substr(2,1);
+       if(d !="/"){
+         obj.value='';
+       }
+       }
+   }
+}
