@@ -1,0 +1,5 @@
+$("#t_TreeNav").treeView("option", "tooltip", {
+    content: function(cb, node) {
+        return node.label;
+    }
+} );
