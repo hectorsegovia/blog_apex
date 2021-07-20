@@ -1,0 +1,38 @@
+var req = new XMLHttpRequest();
+var sucursal_desde = document.getElementById("P6_SUCURSAL_DESDE").value;
+var sucursal_hasta = document.getElementById("P6_SUCURSAL_HASTA").value;
+var estado_desde = document.getElementById("P6_ESTADO_SOCIO_DESDE").value;
+var estado_hasta = document.getElementById("P6_ESTADO_SOCIO_HASTA").value;
+var situacion_desde = document.getElementById("P6_SITUACION_SOCIO_DESDE").value;
+var situacion_hasta = document.getElementById("P6_SITUACION_SOCIO_HASTA").value;
+var socio_desde = document.getElementById("P6_SOCIO_DESDE").value;
+var socio_hasta = document.getElementById("P6_SOCIO_HASTA").value;
+var ubicacion_desde = document.getElementById("P6_UBICACION_DESDE").value;
+var ubicacion_hasta = document.getElementById("P6_UBICACION_HASTA").value;
+var atraso_desde = document.getElementById("P6_ATRASO_DESDE").value;
+var atraso_hasta = document.getElementById("P6_ATRASO_HASTA").value;
+var morosidad_desde = document.getElementById("P6_MOROSIDAD_DESDE").value;
+var morosidad_hasta = document.getElementById("P6_MOROSIDAD_HASTA").value;
+var suscripto_desde = document.getElementById("P6_SUSCRIPTO_DESDE").value;
+var suscripto_hasta = document.getElementById("P6_SUSCRIPTO_HASTA").value;
+var integrado_desde = document.getElementById("P6_INTEGRADO_DESDE").value;
+var integrado_hasta = document.getElementById("P6_INTEGRADO_HASTA").value;
+var fecha = document.getElementById("P6_FECHA").value;
+var usuario = document.getElementById("P6_USUARIO").value;
+
+
+req.open('GET',
+         'http://172.31.10.76:8080/jasperserver/rest_v2/reports/reports/excelsis/apo/apol2136_mesa.pdf?P_SUCURSAL_DESDE='+sucursal_desde+'&P_SUCURSAL_HASTA='+sucursal_hasta+'&P_ESTADO_SOCIO_DESDE='+estado_desde+'&P_ESTADO_SOCIO_HASTA='+estado_hasta+'&P_SITUACION_SOCIO_DESDE='+situacion_desde+'&P_SITUACION_SOCIO_HASTA='+situacion_hasta+'&P_SOCIO_DESDE='+socio_desde+'&P_SOCIO_HASTA='+socio_hasta+'&P_FECHA_CAL='+fecha+'&P_ATRASO_DESDE='+atraso_desde+'&P_ATRASO_HASTA='+atraso_hasta+'&P_MOROSIDAD_DESDE='+morosidad_desde+'&P_MOROSIDAD_HASTA='+morosidad_hasta+'&P_SUSCRIPTO_DESDE='+suscripto_desde+'&P_SUSCRIPTO_HASTA='+suscripto_hasta+'&P_INTEGRADO_DESDE='+integrado_desde+'&P_INTEGRADO_HASTA='+integrado_hasta+'&P_USUARIO='+usuario+'&j_username=jasperadmin&j_password=Jasper%232021'
+          , true);
+    req.withCredentials = false;
+    req.responseType = "blob";
+    req.onload = function (event) {
+    var blob = req.response;
+    console.log(blob.size);
+    var link=document.createElement('a');
+    link.href=window.URL.createObjectURL(blob);
+    link.download="apol2136_mesa_Suc "+sucursal_desde+"-"+sucursal_hasta+".pdf";
+    link.click();
+    window.close();
+};
+req.send(); 
